@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { DirectContact } from "../../components/DirectContact";
 
 export const metadata: Metadata = { title: "Контакты · Kontakt" };
 
@@ -9,13 +10,13 @@ export default function ContactPage() {
       <section className="page-hero shell compact">
         <p className="kicker ru-only">Контакты</p><p className="kicker de-only">Kontakt</p>
         <h1 className="ru-only">Связь без лишних кругов.</h1><h1 className="de-only">Kontakt ohne Umwege.</h1>
-        <p className="lead narrow ru-only">Для первой связи используйте форму заявки. Так мы сразу поймём подходящий формат консультации.</p>
-        <p className="lead narrow de-only">Nutzen Sie für den Erstkontakt die Anfrage. So lässt sich das passende Beratungsformat direkt klären.</p>
+        <p className="lead narrow ru-only">Запишитесь через календарь или свяжитесь с врачом напрямую по телефону или WhatsApp.</p>
+        <p className="lead narrow de-only">Buchen Sie über den Kalender oder kontaktieren Sie den Arzt direkt per Telefon oder WhatsApp.</p>
       </section>
       <section className="contact-grid shell">
         <div className="contact-card primary-contact">
           <span className="contact-label ru-only">Специалист</span><span className="contact-label de-only">Ansprechpartner</span>
-          <h2 className="ru-only">Женис Аязбаев</h2><h2 className="de-only">Zhenis Ayazbayev</h2>
+          <h2 className="ru-only">Женя Саязбаев</h2><h2 className="de-only">Zhenis Ayazbayev</h2>
           <p>Facharzt für Neurologie</p>
           <dl>
             <div><dt className="ru-only">Языки</dt><dt className="de-only">Sprachen</dt><dd>Русский · Deutsch</dd></div>
@@ -25,12 +26,7 @@ export default function ContactPage() {
           <Link href="/zapis" className="button"><span className="ru-only">Оставить заявку</span><span className="de-only">Termin anfragen</span></Link>
         </div>
         <div className="contact-stack">
-          <div className="contact-card">
-            <span className="contact-label ru-only">Прямые контакты</span><span className="contact-label de-only">Direkter Kontakt</span>
-            <h3 className="ru-only">Добавляются перед открытым запуском</h3><h3 className="de-only">Wird vor dem öffentlichen Start ergänzt</h3>
-            <p className="ru-only">E-mail и Signal будут опубликованы после подтверждения. В приватной версии личные данные не показываются.</p>
-            <p className="de-only">E-Mail und Signal werden nach Bestätigung ergänzt. In der privaten Version werden keine persönlichen Kontaktdaten veröffentlicht.</p>
-          </div>
+          <DirectContact className="contact-card" />
           <div className="contact-card emergency-card">
             <span className="contact-label ru-only">Экстренная ситуация</span><span className="contact-label de-only">Notfall</span>
             <h3 className="ru-only">Не используйте онлайн-запись.</h3><h3 className="de-only">Keine Online-Anfrage senden.</h3>

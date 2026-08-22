@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { CalBooking } from "../../components/CalBooking";
+import { DirectContact } from "../../components/DirectContact";
 
 export const metadata: Metadata = { title: "Запись · Terminanfrage" };
 
@@ -12,6 +13,7 @@ export default function BookingPage() {
         <h1 className="de-only">Wählen Sie eine passende Zeit.</h1>
         <p className="lead ru-only">Свободный слот — это предварительный запрос. Окончательное время консультации назначает и подтверждает врач.</p>
         <p className="lead de-only">Ein freies Zeitfenster ist zunächst eine Anfrage. Der verbindliche Termin wird vom Arzt festgelegt und bestätigt.</p>
+        <DirectContact className="booking-direct-contact" />
         <div className="steps">
           <div><span>1</span><p><b className="ru-only">Дата и время</b><b className="de-only">Datum und Uhrzeit</b><small className="ru-only">Выберите один из свободных слотов</small><small className="de-only">Wählen Sie ein freies Zeitfenster</small></p></div>
           <div><span>2</span><p><b className="ru-only">Контактные данные</b><b className="de-only">Kontaktdaten</b><small className="ru-only">Телефон и предпочитаемый способ связи</small><small className="de-only">Telefon und bevorzugter Kontaktweg</small></p></div>
