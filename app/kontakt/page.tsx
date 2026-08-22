@@ -16,7 +16,7 @@ export default function ContactPage() {
       <section className="contact-grid shell">
         <div className="contact-card primary-contact">
           <span className="contact-label ru-only">Специалист</span><span className="contact-label de-only">Ansprechpartner</span>
-          <h2 className="ru-only">Женя Саязбаев</h2><h2 className="de-only">Zhenis Ayazbayev</h2>
+          <h2 className="ru-only">Женис Аязбаев</h2><h2 className="de-only">Zhenis Ayazbayev</h2>
           <p>Facharzt für Neurologie</p>
           <dl>
             <div><dt className="ru-only">Языки</dt><dt className="de-only">Sprachen</dt><dd>Русский · Deutsch</dd></div>

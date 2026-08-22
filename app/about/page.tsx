@@ -171,7 +171,7 @@ export default function AboutPage() {
           <div className="credential-heading">
             <div className="verification-copy">
               <p className="kicker light ru-only">Образование и квалификация</p><p className="kicker light de-only">Ausbildung & Qualifikation</p>
-              <h2 className="ru-only">Документы о медицинском образовании и специализации.</h2><h2 className="de-only">Nachweise der medizinischen Ausbildung und Spezialisierung.</h2>
+              <h2 className="ru-only">Документы о медицинском образовании и специализации</h2><h2 className="de-only">Nachweise der medizinischen Ausbildung und Spezialisierung</h2>
             </div>
             <p className="credential-intro ru-only">Здесь опубликованы диплом врача, документы о подготовке по психиатрии в Институте имени В. М. Бехтерева, степень магистра медицинских наук и немецкая Approbation. Каждый скан можно открыть полностью.</p>
             <p className="credential-intro de-only">Veröffentlicht sind das Arztdiplom, Nachweise der psychiatrischen Qualifikation am W. M. Bechterew-Institut, der Masterabschluss in Medizin und die deutsche Approbation. Jeder Scan lässt sich vollständig öffnen.</p>

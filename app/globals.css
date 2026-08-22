@@ -15,7 +15,8 @@ html { width: 100%; max-width: 100%; overflow-x: hidden; scroll-behavior: smooth
 body { width: 100%; max-width: 100%; margin: 0; overflow-x: hidden; color: var(--ink); background: var(--paper); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
 main { max-width: 100%; overflow: clip; }
 img, iframe, video { max-width: 100%; }
-:where(h1, h2, h3, p, li, dt, dd, small) { overflow-wrap: anywhere; }
+:where(h1, h2, h3) { overflow-wrap: normal; word-break: normal; hyphens: none; text-wrap: balance; }
+:where(p, li, dt, dd, small) { overflow-wrap: break-word; word-break: normal; }
 :where(.hero-grid, .section-heading, .service-row, .split-panel, .about-hero, .career-row, .verification-panel, .booking-page, .faq-layout, .contact-grid, .footer-grid) > * { min-width: 0; }
 a { color: inherit; text-decoration: none; }
 button, input, select { font: inherit; }
@@ -200,6 +201,13 @@ h1, h2, h3 { letter-spacing: -.04em; }
 .calendar-heading { padding: 10px clamp(4px, 1.2vw, 12px) 18px; }
 .calendar-heading h2 { margin-bottom: 12px; font: 500 clamp(32px, 3.2vw, 44px)/1.06 Georgia, serif; }
 .calendar-heading > p:not(.kicker) { max-width: 720px; margin-bottom: 0; color: var(--ink-soft); font-size: 14px; line-height: 1.6; }
+.calendar-status { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 0; color: var(--ink-soft); font-size: 13px; line-height: 1.5; text-align: center; }
+.calendar-status-loading { min-height: 66px; }
+.calendar-status-ready { display: none; }
+.calendar-status-delayed { min-height: 76px; padding: 14px 18px; margin-bottom: 12px; flex-wrap: wrap; border-radius: 16px; background: var(--aqua); }
+.calendar-status-delayed .text-link { flex: 0 0 auto; }
+.calendar-spinner { width: 20px; height: 20px; flex: 0 0 auto; border: 2px solid rgba(22,120,97,.2); border-top-color: var(--mint-deep); border-radius: 50%; animation: calendar-spin .8s linear infinite; }
+@keyframes calendar-spin { to { transform: rotate(360deg); } }
 .cal-inline { width: 100%; min-height: 760px; overflow: auto; border: 1px solid var(--line); border-radius: 22px; background: white; }
 .calendar-help { display: flex; align-items: center; justify-content: space-between; gap: 26px; margin-top: 18px; padding: 18px 12px 4px; }
 .calendar-help > div { display: grid; gap: 5px; max-width: 610px; color: var(--ink-soft); font-size: 12px; line-height: 1.5; }
@@ -266,6 +274,7 @@ input::placeholder { color: rgba(62,91,88,.54); }
 .booking-direct-contact p { font-size: 14px; }
 .booking-direct-contact .direct-phone-number { font-size: 20px; }
 .booking-direct-contact + .steps { margin-top: 34px; }
+.booking-direct-contact-bottom { grid-column: 1 / -1; margin-top: 0; }
 .emergency-card { background: #efe8df; }
 .footer { padding: 42px 0; border-top: 1px solid var(--line); }
 .footer-grid { display: flex; justify-content: space-between; gap: 40px; }
@@ -342,17 +351,20 @@ input::placeholder { color: rgba(62,91,88,.54); }
   .section { padding-top: 62px; padding-bottom: 62px; }
   .page-hero { padding-top: 58px; }
   .page-hero h1 { font-size: 42px; line-height: 1.1; }
-  .section-heading h2, .cta-panel h2, .centered-cta h2, .verification-copy h2 { font-size: 36px; line-height: 1.12; }
-  .booking-aside h1 { font-size: 42px; line-height: 1.1; }
+  .section-heading h2, .cta-panel h2, .centered-cta h2 { font-size: 32px; line-height: 1.14; }
+  .verification-copy h2 { font-size: 30px; line-height: 1.16; }
+  .calendar-heading h2 { font-size: 30px; line-height: 1.14; }
+  .booking-aside h1 { font-size: 40px; line-height: 1.1; }
   .service-row { grid-template-columns: 1fr; gap: 14px; }
   .tag-group { grid-column: 1; }
   .audience-card, .contact-card { padding: 28px; }
-  .contact-card h2 { margin-top: 48px; font-size: 38px; line-height: 1.12; }
+  .contact-card h2 { margin-top: 48px; font-size: 34px; line-height: 1.14; }
   .contact-card dl div { align-items: flex-start; flex-direction: column; gap: 4px; }
   .contact-card dd { max-width: 100%; }
   .direct-contact-actions { grid-template-columns: 1fr; }
   .direct-contact-actions .button { min-height: 58px; }
   .booking-direct-contact { padding: 22px 18px; }
+  .booking-direct-contact-bottom { margin-top: 4px; }
   .direct-phone-number { font-size: 22px; }
   .form-grid { grid-template-columns: 1fr; }
   .form-grid label.wide { grid-column: 1; }
@@ -392,9 +404,11 @@ input::placeholder { color: rgba(62,91,88,.54); }
 @media (max-width: 360px) {
   .shell { width: min(100% - 28px, 1180px); }
   .brand-copy b { font-size: 13px; }
-  .hero h1, .page-hero h1, .about-copy h1, .booking-aside h1 { font-size: 38px; }
+  .hero h1, .page-hero h1, .about-copy h1, .booking-aside h1 { font-size: 36px; }
+  .section-heading h2, .cta-panel h2, .centered-cta h2 { font-size: 30px; }
+  .verification-copy h2, .calendar-heading h2 { font-size: 28px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * { scroll-behavior: auto !important; transition: none !important; }
+  * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
 }

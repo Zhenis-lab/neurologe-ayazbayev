@@ -79,8 +79,8 @@ export default function HomePage() {
         <div className="section-heading">
           <div>
             <p className="kicker ru-only">Чем могу помочь</p><p className="kicker de-only">Wobei ich helfen kann</p>
-            <h2 className="ru-only">Меньше неопределённости.<br />Больше ясности.</h2>
-            <h2 className="de-only">Weniger Unsicherheit.<br />Mehr Klarheit.</h2>
+            <h2 className="ru-only">Меньше неопределённости<br />Больше ясности</h2>
+            <h2 className="de-only">Weniger Unsicherheit<br />Mehr Klarheit</h2>
           </div>
           <p className="section-intro ru-only">Консультация строится вокруг вашей конкретной ситуации — без обещаний «диагноза за пять минут».</p>
           <p className="section-intro de-only">Die Beratung richtet sich nach Ihrer konkreten Situation — ohne vorschnelle Versprechen.</p>
@@ -100,8 +100,8 @@ export default function HomePage() {
         <div className="cta-panel">
           <div>
             <p className="kicker light ru-only">Первый шаг</p><p className="kicker light de-only">Der erste Schritt</p>
-            <h2 className="ru-only">Выберите свободное время для консультации.</h2>
-            <h2 className="de-only">Wählen Sie eine freie Zeit für Ihre Beratung.</h2>
+            <h2 className="ru-only">Оставьте заявку на консультацию</h2>
+            <h2 className="de-only">Senden Sie Ihre Terminanfrage</h2>
             <p className="ru-only">Заявка поступит врачу, а окончательное время будет подтверждено отдельно.</p>
             <p className="de-only">Ihre Anfrage geht direkt an den Arzt; der verbindliche Termin wird separat bestätigt.</p>
           </div>
