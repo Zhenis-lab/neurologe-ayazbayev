@@ -132,8 +132,10 @@ export default function HomePage() {
               </figcaption>
             </figure>
             <div className="v2-hero-seal" aria-hidden="true">
-              <span>DE</span>
-              <small>Approbation</small>
+              <span className="v2-seal-desktop">DE</span>
+              <small className="v2-seal-desktop">Approbation</small>
+              <span className="v2-seal-mobile">✓</span>
+              <small className="v2-seal-mobile">Deutsche Approbation</small>
             </div>
           </div>
         </Container>
