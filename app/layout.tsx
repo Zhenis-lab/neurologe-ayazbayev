@@ -5,7 +5,7 @@ import { Header } from "../components/Header";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://zhenis-neurologie-online.ayazbayev.chatgpt.site"),
+  metadataBase: new URL("https://neurologe-sig.de"),
   title: {
     default: "Онлайн-консультация невролога из Германии | Женис Аязбаев",
     template: "%s | Женис Аязбаев"
@@ -49,11 +49,11 @@ export const metadata: Metadata = {
 const physicianSchema = {
   "@context": "https://schema.org",
   "@type": "Physician",
-  "@id": "https://zhenis-neurologie-online.ayazbayev.chatgpt.site/#physician",
-  url: "https://zhenis-neurologie-online.ayazbayev.chatgpt.site/",
+  "@id": "https://neurologe-sig.de/#physician",
+  url: "https://neurologe-sig.de/",
   name: "Zhenis Ayazbayev",
   alternateName: "Женис Аязбаев",
-  image: "https://zhenis-neurologie-online.ayazbayev.chatgpt.site/zhenis-ayazbayev.jpg",
+  image: "https://neurologe-sig.de/zhenis-ayazbayev.jpg",
   medicalSpecialty: "https://schema.org/Neurologic",
   availableLanguage: ["Russian", "German"],
   areaServed: ["Germany", "Kazakhstan", "Kyrgyzstan", "Uzbekistan"],
