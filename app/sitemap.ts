@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const siteUrl = "https://zhenis-neurologie-online.ayazbayev.chatgpt.site";
+const siteUrl = "https://neurologe-sig.de";
 
 export const dynamic = "force-static";
 
