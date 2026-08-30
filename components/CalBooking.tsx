@@ -113,10 +113,10 @@ export function CalBooking() {
   }, []);
 
   return (
-    <div className="calendar-booking">
-      <div className="calendar-heading">
-        <p className="kicker ru-only">Свободные даты</p>
-        <p className="kicker de-only">Freie Termine</p>
+    <div className="v2-calendar-booking">
+      <div className="v2-calendar-heading">
+        <p className="v2-kicker ru-only">Свободные даты</p>
+        <p className="v2-kicker de-only">Freie Termine</p>
         <h2 className="ru-only">Выберите удобное время</h2>
         <h2 className="de-only">Wählen Sie einen passenden Termin</h2>
         <p className="ru-only">
@@ -127,10 +127,10 @@ export function CalBooking() {
         </p>
       </div>
 
-      <div className={`calendar-status calendar-status-${status}`} aria-live="polite">
+      <div className={`v2-calendar-status v2-calendar-status-${status}`} aria-live="polite">
         {status === "loading" ? (
           <>
-            <span className="calendar-spinner" aria-hidden="true" />
+            <span className="v2-calendar-spinner" aria-hidden="true" />
             <span className="ru-only">Загружаем свободные даты…</span>
             <span className="de-only">Freie Termine werden geladen…</span>
           </>
@@ -139,7 +139,7 @@ export function CalBooking() {
           <>
             <span className="ru-only">Календарь загружается дольше обычного. Его можно открыть в отдельном окне.</span>
             <span className="de-only">Der Kalender lädt länger als gewöhnlich. Sie können ihn in einem eigenen Fenster öffnen.</span>
-            <a className="text-link" href={CAL_URL} target="_blank" rel="noreferrer">
+            <a className="v2-inline-link" href={CAL_URL} target="_blank" rel="noreferrer">
               <span className="ru-only">Открыть календарь ↗</span>
               <span className="de-only">Kalender öffnen ↗</span>
             </a>
@@ -149,19 +149,19 @@ export function CalBooking() {
 
       <div
         id="cal-inline-online-konsultaciya"
-        className="cal-inline"
+        className="v2-cal-inline"
         aria-label="Календарь записи на онлайн-консультацию"
         ref={containerRef}
       />
 
-      <div className="calendar-help">
+      <div className="v2-calendar-help">
         <div>
           <strong className="ru-only">Запись подтверждает врач.</strong>
           <strong className="de-only">Der Termin wird vom Arzt bestätigt.</strong>
           <span className="ru-only">Вы получите отдельное подтверждение и ссылку для видеосвязи. Не указывайте в форме диагноз и не отправляйте медицинские документы.</span>
           <span className="de-only">Sie erhalten eine separate Bestätigung und den Link zum Videogespräch. Bitte tragen Sie keine Diagnose ein und senden Sie hier keine medizinischen Unterlagen.</span>
         </div>
-        <a className="text-link" href={CAL_URL} target="_blank" rel="noreferrer">
+        <a className="v2-inline-link" href={CAL_URL} target="_blank" rel="noreferrer">
           <span className="ru-only">Открыть календарь отдельно ↗</span>
           <span className="de-only">Kalender separat öffnen ↗</span>
         </a>

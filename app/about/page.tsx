@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowIcon } from "../../components/Icons";
+import { Container } from "../../components/v2/Container";
+import { Section } from "../../components/v2/Section";
+import { ButtonLink } from "../../components/v2/ButtonLink";
 
 export const metadata: Metadata = {
   title: "Обо мне · Über mich",
@@ -48,7 +50,7 @@ const path = [
 const credentials = [
   {
     n: "01",
-    className: "credential-wide",
+    className: "v2-document-wide",
     preview: "/documents/doctor-diploma.webp",
     original: "/documents/doctor-diploma.jpg",
     width: 1200,
@@ -61,7 +63,7 @@ const credentials = [
   },
   {
     n: "02",
-    className: "credential-portrait",
+    className: "v2-document-portrait",
     preview: "/documents/bekhterev-primary-specialization.webp",
     original: "/documents/bekhterev-primary-specialization.jpg",
     width: 887,
@@ -74,7 +76,7 @@ const credentials = [
   },
   {
     n: "03",
-    className: "credential-portrait",
+    className: "v2-document-portrait",
     preview: "/documents/bekhterev-specialist-certificate.webp",
     original: "/documents/bekhterev-specialist-certificate.jpg",
     width: 853,
@@ -87,7 +89,7 @@ const credentials = [
   },
   {
     n: "04",
-    className: "credential-wide",
+    className: "v2-document-wide",
     preview: "/documents/bekhterev-hours-supplement.webp",
     original: "/documents/bekhterev-hours-supplement.jpg",
     width: 1200,
@@ -100,7 +102,7 @@ const credentials = [
   },
   {
     n: "05",
-    className: "credential-master",
+    className: "v2-document-master",
     preview: "/documents/master-diploma.webp",
     original: "/documents/master-diploma.jpg",
     width: 1200,
@@ -113,7 +115,7 @@ const credentials = [
   },
   {
     n: "06",
-    className: "credential-portrait",
+    className: "v2-document-portrait",
     preview: "/documents/approbation.webp",
     original: "/documents/approbation.jpg",
     width: 1086,
@@ -129,61 +131,75 @@ const credentials = [
 
 export default function AboutPage() {
   return (
-    <>
-      <section className="about-hero shell">
-        <div className="about-copy">
-          <p className="kicker ru-only">Обо мне</p><p className="kicker de-only">Über mich</p>
-          <h1 className="ru-only">Два клинических взгляда.<br />Один понятный план.</h1>
-          <h1 className="de-only">Zwei klinische Perspektiven.<br />Ein klarer Plan.</h1>
-          <p className="lead ru-only">Мой профессиональный путь соединяет неврологию, психиатрию, преподавание и доказательную медицину — опыт, который помогает видеть не только отдельный симптом, но и человека в целом.</p>
-          <p className="lead de-only">Mein beruflicher Weg verbindet Neurologie, Psychiatrie, Lehre und evidenzbasierte Medizin — eine Erfahrung, die nicht nur das einzelne Symptom, sondern den Menschen als Ganzes in den Blick nimmt.</p>
-          <div className="about-facts">
-            <span><b className="ru-only">Германия</b><b className="de-only">Deutschland</b><small className="ru-only">Approbation и Facharzt</small><small className="de-only">Approbation & Facharzt</small></span>
-            <span><b>RU · DE</b><small className="ru-only">языки консультации</small><small className="de-only">Beratungssprachen</small></span>
-            <span><b className="ru-only">Неврология + психиатрия</b><b className="de-only">Neurologie + Psychiatrie</b><small className="ru-only">широкий клинический опыт</small><small className="de-only">breite klinische Erfahrung</small></span>
-          </div>
-        </div>
-        <div className="about-photo-wrap">
-          <img src="/zhenis-ayazbayev.jpg" alt="Женис Аязбаев — Facharzt für Neurologie" width="1055" height="1536" />
-          <div className="about-photo-label"><strong className="ru-only">Женис Аязбаев</strong><strong className="de-only">Zhenis Ayazbayev</strong><span>Facharzt für Neurologie</span></div>
-        </div>
-      </section>
-
-      <section className="section shell career-section">
-        <div className="section-heading">
-          <div><p className="kicker ru-only">Профессиональный путь</p><p className="kicker de-only">Beruflicher Weg</p><h2 className="ru-only">От медицинского образования<br />к немецкой неврологии.</h2><h2 className="de-only">Von der medizinischen Lehre<br />zur Neurologie in Deutschland.</h2></div>
-          <p className="section-intro ru-only">Здесь оставлены этапы, которые действительно важны пациенту: клиническая широта, опыт обучения врачей и официальное признание квалификации в Германии.</p>
-          <p className="section-intro de-only">Im Mittelpunkt stehen die für Patienten relevanten Stationen: klinische Breite, Erfahrung in der ärztlichen Lehre und die anerkannte Qualifikation in Deutschland.</p>
-        </div>
-        <div className="career-list">
-          {path.map((item) => (
-            <article className="career-row" key={item.n}>
-              <span className="career-number">{item.n}</span>
-              <h3 className="ru-only">{item.ruTitle}</h3><h3 className="de-only">{item.deTitle}</h3>
-              <p className="ru-only">{item.ruText}</p><p className="de-only">{item.deText}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section shell verification-section">
-        <div className="verification-panel credential-panel">
-          <div className="credential-heading">
-            <div className="verification-copy">
-              <p className="kicker light ru-only">Образование и квалификация</p><p className="kicker light de-only">Ausbildung & Qualifikation</p>
-              <h2 className="ru-only">Документы о медицинском образовании и специализации</h2><h2 className="de-only">Nachweise der medizinischen Ausbildung und Spezialisierung</h2>
+    <div className="v2-page">
+      <section className="v2-split-hero">
+        <Container className="v2-split-hero-grid">
+          <div className="v2-split-hero-copy v2-reveal">
+            <p className="v2-kicker ru-only">Обо мне</p>
+            <p className="v2-kicker de-only">Über mich</p>
+            <h1 className="ru-only">Два клинических взгляда. Один понятный план.</h1>
+            <h1 className="de-only">Zwei klinische Perspektiven. Ein klarer Plan.</h1>
+            <p className="v2-hero-lead ru-only">Мой профессиональный путь соединяет неврологию, психиатрию, преподавание и доказательную медицину — опыт, который помогает видеть не только отдельный симптом, но и человека в целом.</p>
+            <p className="v2-hero-lead de-only">Mein beruflicher Weg verbindet Neurologie, Psychiatrie, Lehre und evidenzbasierte Medizin — eine Erfahrung, die nicht nur das einzelne Symptom, sondern den Menschen als Ganzes in den Blick nimmt.</p>
+            <div className="v2-fact-row">
+              <span><b className="ru-only">Германия</b><b className="de-only">Deutschland</b><small className="ru-only">Approbation и Facharzt</small><small className="de-only">Approbation & Facharzt</small></span>
+              <span><b>RU · DE</b><small className="ru-only">языки консультации</small><small className="de-only">Beratungssprachen</small></span>
+              <span><b className="ru-only">Неврология + психиатрия</b><b className="de-only">Neurologie + Psychiatrie</b><small className="ru-only">широкий клинический опыт</small><small className="de-only">breite klinische Erfahrung</small></span>
             </div>
-            <p className="credential-intro ru-only">Здесь опубликованы диплом врача, документы о подготовке по психиатрии в Институте имени В. М. Бехтерева, степень магистра медицинских наук и немецкая Approbation. Каждый скан можно открыть полностью.</p>
-            <p className="credential-intro de-only">Veröffentlicht sind das Arztdiplom, Nachweise der psychiatrischen Qualifikation am W. M. Bechterew-Institut, der Masterabschluss in Medizin und die deutsche Approbation. Jeder Scan lässt sich vollständig öffnen.</p>
+          </div>
+          <div className="v2-split-hero-media v2-reveal v2-reveal-delay">
+            <figure className="v2-portrait-frame">
+              <img src="/zhenis-ayazbayev.jpg" alt="Женис Аязбаев — Facharzt für Neurologie" width="1055" height="1536" decoding="async" />
+              <figcaption>
+                <span className="ru-only">Facharzt в Германии</span>
+                <span className="de-only">Facharzt in Deutschland</span>
+              </figcaption>
+            </figure>
+          </div>
+        </Container>
+      </section>
+
+      <Section id="career">
+        <div className="v2-section-heading v2-reveal">
+          <div>
+            <p className="v2-kicker ru-only">Профессиональный путь</p>
+            <p className="v2-kicker de-only">Beruflicher Weg</p>
+            <h2 className="ru-only">От медицинского образования к немецкой неврологии</h2>
+            <h2 className="de-only">Von der medizinischen Lehre zur Neurologie in Deutschland</h2>
+          </div>
+          <p className="v2-heading-copy ru-only">Здесь оставлены этапы, которые действительно важны пациенту: клиническая широта, опыт обучения врачей и официальное признание квалификации в Германии.</p>
+          <p className="v2-heading-copy de-only">Im Mittelpunkt stehen die für Patienten relevanten Stationen: klinische Breite, Erfahrung in der ärztlichen Lehre und die anerkannte Qualifikation in Deutschland.</p>
+        </div>
+        <ol className="v2-timeline">
+          {path.map((item) => (
+            <li className="v2-timeline-row v2-reveal" key={item.n}>
+              <span className="v2-step-number">{item.n}</span>
+              <h3 className="ru-only">{item.ruTitle}</h3>
+              <h3 className="de-only">{item.deTitle}</h3>
+              <p className="ru-only">{item.ruText}</p>
+              <p className="de-only">{item.deText}</p>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Section id="credentials" tone="surface">
+        <div className="v2-document-panel v2-reveal">
+          <div className="v2-document-heading">
+            <div>
+              <p className="v2-kicker v2-kicker-light ru-only">Образование и квалификация</p>
+              <p className="v2-kicker v2-kicker-light de-only">Ausbildung & Qualifikation</p>
+              <h2 className="ru-only">Документы о медицинском образовании и специализации</h2>
+              <h2 className="de-only">Nachweise der medizinischen Ausbildung und Spezialisierung</h2>
+            </div>
+            <p className="v2-document-intro ru-only">Здесь опубликованы диплом врача, документы о подготовке по психиатрии в Институте имени В. М. Бехтерева, степень магистра медицинских наук и немецкая Approbation. Каждый скан можно открыть полностью.</p>
+            <p className="v2-document-intro de-only">Veröffentlicht sind das Arztdiplom, Nachweise der psychiatrischen Qualifikation am W. M. Bechterew-Institut, der Masterabschluss in Medizin und die deutsche Approbation. Jeder Scan lässt sich vollständig öffnen.</p>
           </div>
 
-          <div className="credential-grid">
+          <div className="v2-document-grid">
             {credentials.map((credential) => (
-              <article
-                className={`credential-card ${credential.className}`}
-                key={credential.n}
-              >
-                <a className="credential-image" href={credential.original} target="_blank" rel="noreferrer">
+              <article className={`v2-document-card ${credential.className}`} key={credential.n}>
+                <a className="v2-document-image" href={credential.original} target="_blank" rel="noreferrer">
                   <img
                     src={credential.preview}
                     alt={credential.alt}
@@ -191,10 +207,10 @@ export default function AboutPage() {
                     height={credential.height}
                     loading="lazy"
                   />
-                  <span className="credential-open" aria-hidden="true">↗</span>
+                  <span className="v2-document-open" aria-hidden="true">↗</span>
                 </a>
-                <span className="credential-meta">
-                  <span className="credential-number">{credential.n}</span>
+                <span className="v2-document-meta">
+                  <span className="v2-document-number">{credential.n}</span>
                   <span>
                     <strong className="ru-only">{credential.ruTitle}</strong>
                     <strong className="de-only">{credential.deTitle}</strong>
@@ -202,12 +218,12 @@ export default function AboutPage() {
                     <small className="de-only">{credential.deNote}</small>
                   </span>
                 </span>
-                <span className="credential-actions">
+                <span className="v2-document-actions">
                   <a href={credential.original} target="_blank" rel="noreferrer">
                     <span className="ru-only">Открыть скан</span><span className="de-only">Scan öffnen</span><span aria-hidden="true">↗</span>
                   </a>
                   {credential.verifyUrl ? (
-                    <a className="credential-verify" href={credential.verifyUrl} target="_blank" rel="noreferrer">
+                    <a className="v2-document-verify" href={credential.verifyUrl} target="_blank" rel="noreferrer">
                       <span className="ru-only">Проверить Approbation</span><span className="de-only">Approbation prüfen</span><span aria-hidden="true">↗</span>
                     </a>
                   ) : null}
@@ -215,23 +231,35 @@ export default function AboutPage() {
               </article>
             ))}
           </div>
-          <div className="credential-verification-note">
-            <span className="credential-seal" aria-hidden="true">✓</span>
+
+          <div className="v2-document-verify-note">
+            <span className="v2-document-seal" aria-hidden="true">✓</span>
             <div>
-              <strong className="ru-only">Официальная проверка немецкой Approbation</strong><strong className="de-only">Offizielle Prüfung der deutschen Approbation</strong>
+              <strong className="ru-only">Официальная проверка немецкой Approbation</strong>
+              <strong className="de-only">Offizielle Prüfung der deutschen Approbation</strong>
               <p className="ru-only">В нижней части Approbationsurkunde расположен 2D‑код DataMatrix и 64‑значный DocID. Код можно отсканировать либо ввести вручную в сервисе Bundesärztekammer.</p>
               <p className="de-only">Am unteren Rand der Approbationsurkunde befinden sich ein 2D‑DataMatrix-Code und eine 64-stellige DocID. Der Code kann gescannt oder beim Dienst der Bundesärztekammer manuell eingegeben werden.</p>
             </div>
-            <a href="https://www.kammerservice.de/dispatcher/" target="_blank" rel="noreferrer" className="button button-light">
-              <span className="ru-only">Перейти к проверке</span><span className="de-only">Zur Prüfung</span><ArrowIcon />
+            <a className="v2-button v2-button-light" href="https://www.kammerservice.de/dispatcher/" target="_blank" rel="noreferrer">
+              <span><span className="ru-only">Перейти к проверке</span><span className="de-only">Zur Prüfung</span></span>
+              <ArrowIcon />
             </a>
           </div>
         </div>
-        <div className="about-bottom-cta">
-          <div><p className="ru-only">Хотите обсудить вашу ситуацию?</p><p className="de-only">Möchten Sie Ihre Situation besprechen?</p><h2 className="ru-only">Начнём с короткой заявки.</h2><h2 className="de-only">Beginnen wir mit einer kurzen Anfrage.</h2></div>
-          <Link href="/zapis" className="button"><span className="ru-only">Записаться</span><span className="de-only">Termin anfragen</span><ArrowIcon /></Link>
+
+        <div className="v2-inline-cta-row v2-reveal">
+          <div>
+            <p className="v2-kicker ru-only">Хотите обсудить вашу ситуацию?</p>
+            <p className="v2-kicker de-only">Möchten Sie Ihre Situation besprechen?</p>
+            <h2 className="ru-only">Начнём с короткой заявки</h2>
+            <h2 className="de-only">Beginnen wir mit einer kurzen Anfrage</h2>
+          </div>
+          <ButtonLink href="/zapis" arrow>
+            <span className="ru-only">Записаться</span>
+            <span className="de-only">Termin anfragen</span>
+          </ButtonLink>
         </div>
-      </section>
-    </>
+      </Section>
+    </div>
   );
 }

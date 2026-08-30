@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import { Header } from "../components/Header";
+import { Container } from "../components/v2/Container";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -115,23 +116,23 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         />
         <Header />
         <main>{children}</main>
-        <footer className="footer">
-          <div className="shell footer-grid">
+        <footer className="v2-footer">
+          <Container className="v2-footer-grid">
             <div>
-              <Link href="/" className="brand footer-brand" aria-label="На главную">
-                <span className="brand-mark"><span className="ru-only">ЖА</span><span className="de-only">ZA</span></span>
+              <Link href="/" className="v2-brand v2-footer-brand" aria-label="На главную">
+                <span className="v2-brand-mark" aria-hidden="true">N</span>
                 <span><span className="ru-only">Женис Аязбаев</span><span className="de-only">Zhenis Ayazbayev</span></span>
               </Link>
-              <p className="muted ru-only">Facharzt für Neurologie · консультации на русском и немецком</p>
-              <p className="muted de-only">Facharzt für Neurologie · Beratung auf Deutsch und Russisch</p>
+              <p className="v2-footer-muted ru-only">Facharzt für Neurologie · консультации на русском и немецком</p>
+              <p className="v2-footer-muted de-only">Facharzt für Neurologie · Beratung auf Deutsch und Russisch</p>
             </div>
-            <div className="footer-note">
+            <div className="v2-footer-note">
               <p className="ru-only">Онлайн-консультация не заменяет экстренную помощь или очный осмотр.</p>
               <p className="de-only">Eine Online-Beratung ersetzt weder den Notdienst noch eine notwendige Untersuchung vor Ort.</p>
               <p className="ru-only">© {new Date().getFullYear()} Женис Аязбаев</p>
               <p className="de-only">© {new Date().getFullYear()} Zhenis Ayazbayev</p>
             </div>
-          </div>
+          </Container>
         </footer>
       </body>
     </html>

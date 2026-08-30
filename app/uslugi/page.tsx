@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowIcon, CheckIcon } from "../../components/Icons";
+import { CheckIcon } from "../../components/Icons";
+import { ButtonLink } from "../../components/v2/ButtonLink";
+import { Container } from "../../components/v2/Container";
+import { Section } from "../../components/v2/Section";
 
 export const metadata: Metadata = { title: "Услуги · Leistungen" };
 
@@ -41,55 +43,76 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <>
-      <section className="page-hero shell">
-        <p className="kicker ru-only">Форматы консультаций</p><p className="kicker de-only">Beratungsformate</p>
-        <h1 className="ru-only">Услуги, которые помогают<br />принять обоснованное решение.</h1>
-        <h1 className="de-only">Leistungen für eine<br />fundierte Entscheidung.</h1>
-        <p className="lead narrow ru-only">Вы получаете не набор медицинских терминов, а структурированное объяснение и понятный план действий.</p>
-        <p className="lead narrow de-only">Sie erhalten keine bloße Sammlung von Fachbegriffen, sondern eine strukturierte Einordnung und einen verständlichen Plan.</p>
+    <div className="v2-page">
+      <section className="v2-page-hero">
+        <Container>
+          <div className="v2-reveal">
+            <p className="v2-kicker ru-only">Форматы консультаций</p>
+            <p className="v2-kicker de-only">Beratungsformate</p>
+            <h1 className="ru-only">Услуги, которые помогают принять обоснованное решение</h1>
+            <h1 className="de-only">Leistungen für eine fundierte Entscheidung</h1>
+            <p className="v2-hero-lead ru-only">Вы получаете не набор медицинских терминов, а структурированное объяснение и понятный план действий.</p>
+            <p className="v2-hero-lead de-only">Sie erhalten keine bloße Sammlung von Fachbegriffen, sondern eine strukturierte Einordnung und einen verständlichen Plan.</p>
+          </div>
+        </Container>
       </section>
 
-      <section className="section shell service-list">
-        {services.map((service) => (
-          <article className="service-row" key={service.n}>
-            <span className="service-number">{service.n}</span>
-            <div>
-              <h2 className="ru-only">{service.ru}</h2><h2 className="de-only">{service.de}</h2>
-              <p className="ru-only">{service.ruText}</p><p className="de-only">{service.deText}</p>
-            </div>
-            <div className="tag-group">{service.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-          </article>
-        ))}
-      </section>
-
-      <section className="section shell split-panel">
-        <div className="audience-card">
-          <p className="kicker ru-only">Для пациентов в Германии</p><p className="kicker de-only">Für Patienten in Deutschland</p>
-          <h2 className="ru-only">Объяснение на родном языке</h2><h2 className="de-only">Beratung ohne Sprachbarriere</h2>
-          <ul className="check-list">
-            <li><CheckIcon /><span className="ru-only">Русский или немецкий язык</span><span className="de-only">Deutsch oder Russisch</span></li>
-            <li><CheckIcon /><span className="ru-only">Ориентация в немецкой системе</span><span className="de-only">Orientierung im deutschen Versorgungssystem</span></li>
-            <li><CheckIcon /><span className="ru-only">Подготовка к очному приёму</span><span className="de-only">Vorbereitung auf den Arzttermin vor Ort</span></li>
-          </ul>
+      <Section>
+        <div className="v2-service-list">
+          {services.map((service) => (
+            <article className="v2-service-row v2-reveal" key={service.n}>
+              <span className="v2-service-number">{service.n}</span>
+              <div>
+                <h2 className="ru-only">{service.ru}</h2>
+                <h2 className="de-only">{service.de}</h2>
+                <p className="ru-only">{service.ruText}</p>
+                <p className="de-only">{service.deText}</p>
+              </div>
+              <div className="v2-service-tags">{service.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+            </article>
+          ))}
         </div>
-        <div className="audience-card accent-card">
-          <p className="kicker ru-only">Для пациентов за пределами Германии</p><p className="kicker de-only">Für Patienten außerhalb Deutschlands</p>
-          <h2 className="ru-only">Независимое мнение из Германии</h2><h2 className="de-only">Unabhängige Einordnung aus Deutschland</h2>
-          <ul className="check-list">
-            <li><CheckIcon /><span className="ru-only">Разбор уже выполненных обследований</span><span className="de-only">Einordnung vorhandener Untersuchungen</span></li>
-            <li><CheckIcon /><span className="ru-only">Письменная структура рекомендаций</span><span className="de-only">Strukturierte Zusammenfassung</span></li>
-            <li><CheckIcon /><span className="ru-only">Без назначения экстренного лечения</span><span className="de-only">Keine Behandlung akuter Notfälle</span></li>
-          </ul>
-        </div>
-      </section>
+      </Section>
 
-      <section className="section shell centered-cta">
-        <p className="ru-only">Не уверены, какой формат подходит?</p><p className="de-only">Sie sind unsicher, welches Format passt?</p>
-        <h2 className="ru-only">Опишите ситуацию — формат уточним до записи.</h2>
-        <h2 className="de-only">Schildern Sie Ihr Anliegen — das passende Format klären wir vorab.</h2>
-        <Link href="/zapis" className="button"><span className="ru-only">Оставить заявку</span><span className="de-only">Anfrage senden</span><ArrowIcon /></Link>
-      </section>
-    </>
+      <Section tone="surface">
+        <div className="v2-audience-grid">
+          <div className="v2-audience-card v2-reveal">
+            <p className="v2-kicker ru-only">Для пациентов в Германии</p>
+            <p className="v2-kicker de-only">Für Patienten in Deutschland</p>
+            <h2 className="ru-only">Объяснение на родном языке</h2>
+            <h2 className="de-only">Beratung ohne Sprachbarriere</h2>
+            <ul className="v2-audience-list">
+              <li><CheckIcon /><span className="ru-only">Русский или немецкий язык</span><span className="de-only">Deutsch oder Russisch</span></li>
+              <li><CheckIcon /><span className="ru-only">Ориентация в немецкой системе</span><span className="de-only">Orientierung im deutschen Versorgungssystem</span></li>
+              <li><CheckIcon /><span className="ru-only">Подготовка к очному приёму</span><span className="de-only">Vorbereitung auf den Arzttermin vor Ort</span></li>
+            </ul>
+          </div>
+          <div className="v2-audience-card v2-audience-card-accent v2-reveal v2-reveal-delay">
+            <p className="v2-kicker ru-only">Для пациентов за пределами Германии</p>
+            <p className="v2-kicker de-only">Für Patienten außerhalb Deutschlands</p>
+            <h2 className="ru-only">Независимое мнение из Германии</h2>
+            <h2 className="de-only">Unabhängige Einordnung aus Deutschland</h2>
+            <ul className="v2-audience-list">
+              <li><CheckIcon /><span className="ru-only">Разбор уже выполненных обследований</span><span className="de-only">Einordnung vorhandener Untersuchungen</span></li>
+              <li><CheckIcon /><span className="ru-only">Письменная структура рекомендаций</span><span className="de-only">Strukturierte Zusammenfassung</span></li>
+              <li><CheckIcon /><span className="ru-only">Без назначения экстренного лечения</span><span className="de-only">Keine Behandlung akuter Notfälle</span></li>
+            </ul>
+          </div>
+        </div>
+      </Section>
+
+      <Section className="v2-final-section">
+        <div className="v2-centered-cta v2-reveal">
+          <p className="v2-kicker ru-only">Не уверены, какой формат подходит?</p>
+          <p className="v2-kicker de-only">Sie sind unsicher, welches Format passt?</p>
+          <h2 className="ru-only">Опишите ситуацию — формат уточним до записи</h2>
+          <h2 className="de-only">Schildern Sie Ihr Anliegen — das passende Format klären wir vorab</h2>
+          <ButtonLink href="/zapis" arrow>
+            <span className="ru-only">Оставить заявку</span>
+            <span className="de-only">Anfrage senden</span>
+          </ButtonLink>
+        </div>
+      </Section>
+    </div>
   );
 }

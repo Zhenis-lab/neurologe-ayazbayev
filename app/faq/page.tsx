@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { ButtonLink } from "../../components/v2/ButtonLink";
+import { Container } from "../../components/v2/Container";
 
 export const metadata: Metadata = { title: "Вопросы и ответы · FAQ" };
 
@@ -44,27 +45,46 @@ const faq = [
 
 export default function FaqPage() {
   return (
-    <>
-      <section className="page-hero shell compact">
-        <p className="kicker ru-only">Вопросы и ответы</p><p className="kicker de-only">Fragen & Antworten</p>
-        <h1 className="ru-only">Главное — до консультации.</h1><h1 className="de-only">Das Wichtigste vor der Beratung.</h1>
+    <div className="v2-page">
+      <section className="v2-page-hero v2-page-hero-compact">
+        <Container>
+          <div className="v2-reveal">
+            <p className="v2-kicker ru-only">Вопросы и ответы</p>
+            <p className="v2-kicker de-only">Fragen & Antworten</p>
+            <h1 className="ru-only">Главное — до консультации</h1>
+            <h1 className="de-only">Das Wichtigste vor der Beratung</h1>
+          </div>
+        </Container>
       </section>
-      <section className="faq-layout shell">
-        <div className="faq-list">
-          {faq.map((item, index) => (
-            <details key={item[0]} open={index === 0}>
-              <summary><span className="ru-only">{item[0]}</span><span className="de-only">{item[1]}</span><i /></summary>
-              <p className="ru-only">{item[2]}</p><p className="de-only">{item[3]}</p>
-            </details>
-          ))}
-        </div>
-        <aside className="faq-aside">
-          <span className="aside-mark">?</span>
-          <h2 className="ru-only">Вашего вопроса нет в списке?</h2><h2 className="de-only">Ihre Frage ist nicht dabei?</h2>
-          <p className="ru-only">Оставьте короткую заявку — без медицинских подробностей.</p><p className="de-only">Senden Sie eine kurze Anfrage — ohne medizinische Details.</p>
-          <Link href="/zapis" className="button button-light"><span className="ru-only">Задать вопрос</span><span className="de-only">Frage stellen</span></Link>
-        </aside>
+
+      <section className="v2-faq-page">
+        <Container className="v2-faq-page-grid">
+          <div className="v2-faq-list v2-reveal">
+            {faq.map((item, index) => (
+              <details key={item[0]} open={index === 0}>
+                <summary>
+                  <span className="ru-only">{item[0]}</span>
+                  <span className="de-only">{item[1]}</span>
+                  <span aria-hidden="true">+</span>
+                </summary>
+                <p className="ru-only">{item[2]}</p>
+                <p className="de-only">{item[3]}</p>
+              </details>
+            ))}
+          </div>
+          <aside className="v2-faq-aside v2-reveal v2-reveal-delay">
+            <span className="v2-faq-aside-mark" aria-hidden="true">?</span>
+            <h2 className="ru-only">Вашего вопроса нет в списке?</h2>
+            <h2 className="de-only">Ihre Frage ist nicht dabei?</h2>
+            <p className="ru-only">Оставьте короткую заявку — без медицинских подробностей.</p>
+            <p className="de-only">Senden Sie eine kurze Anfrage — ohne medizinische Details.</p>
+            <ButtonLink href="/zapis" variant="light">
+              <span className="ru-only">Задать вопрос</span>
+              <span className="de-only">Frage stellen</span>
+            </ButtonLink>
+          </aside>
+        </Container>
       </section>
-    </>
+    </div>
   );
 }

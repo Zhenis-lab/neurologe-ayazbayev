@@ -17,8 +17,13 @@ if (!existsSync("out")) {
 rmSync("dist", { recursive: true, force: true });
 cpSync("out", "dist", { recursive: true });
 mkdirSync("dist/server", { recursive: true });
-mkdirSync("dist/.openai", { recursive: true });
-cpSync(".openai/hosting.json", "dist/.openai/hosting.json");
+
+if (existsSync(".openai/hosting.json")) {
+  mkdirSync("dist/.openai", { recursive: true });
+  cpSync(".openai/hosting.json", "dist/.openai/hosting.json");
+} else {
+  console.warn("Skipping '.openai/hosting.json': file not found.");
+}
 
 const mimeTypes = {
   ".css": "text/css; charset=utf-8",
