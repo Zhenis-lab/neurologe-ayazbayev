@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CheckIcon, DocumentIcon } from "../components/Icons";
 import { ButtonLink } from "../components/v2/ButtonLink";
 import { Container } from "../components/v2/Container";
+import { HeroNeuralMedia } from "../components/v2/HeroNeuralMedia";
 import { NeuralVisual } from "../components/v2/NeuralVisual";
 import { Section } from "../components/v2/Section";
 
@@ -116,7 +117,7 @@ export default function HomePage() {
           </div>
 
           <div className="v2-hero-media v2-reveal v2-reveal-delay" data-future-visual="neuroscience-layer">
-            <NeuralVisual />
+            <HeroNeuralMedia />
             <figure className="v2-portrait-frame">
               <img
                 src="/zhenis-ayazbayev.jpg"
