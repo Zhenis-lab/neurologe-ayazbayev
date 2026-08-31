@@ -3,6 +3,7 @@ import Link from "next/link";
 import Script from "next/script";
 import { Header } from "../components/Header";
 import { Container } from "../components/v2/Container";
+import { RevealOnScroll } from "../components/v2/RevealOnScroll";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -115,6 +116,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           dangerouslySetInnerHTML={{ __html: JSON.stringify(physicianSchema) }}
         />
         <Header />
+        <RevealOnScroll />
         <main>{children}</main>
         <footer className="v2-footer">
           <Container className="v2-footer-grid">

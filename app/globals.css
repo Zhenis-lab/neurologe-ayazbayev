@@ -520,8 +520,9 @@ main:has(> .v2-page) {
 
 .v2-hero-neural-layer::after {
   background:
-    linear-gradient(180deg, rgba(242, 240, 234, .48), transparent 15%, transparent 82%, rgba(238, 236, 230, .92)),
-    radial-gradient(ellipse at 76% 47%, transparent 48%, rgba(242, 240, 234, .32) 100%);
+    linear-gradient(180deg, rgba(242, 240, 234, .72) 0%, rgba(242, 240, 234, .34) 18%, transparent 40%, transparent 78%, rgba(238, 236, 230, .94)),
+    linear-gradient(270deg, rgba(242, 240, 234, .38) 0%, transparent 22%),
+    radial-gradient(ellipse at 72% 52%, transparent 42%, rgba(242, 240, 234, .42) 100%);
 }
 
 .v2-hero-neural-poster,
@@ -533,8 +534,8 @@ main:has(> .v2-page) {
   display: block;
   object-fit: cover;
   object-position: 55% 50%;
-  opacity: .78;
-  filter: saturate(.78) contrast(.96) brightness(1.02);
+  opacity: .6;
+  filter: saturate(.6) contrast(.94) brightness(1.06);
   transform: scale(1.025);
 }
 
@@ -1029,6 +1030,22 @@ p.v2-heading-copy {
 
 .v2-reveal-delay { animation-delay: .08s; }
 
+/* With JS the reveal becomes scroll-driven instead of firing on load, so
+   content below the fold animates when it is actually reached. Only elements
+   that start off-screen get `.v2-reveal-hold`, so nothing already visible can
+   be hidden, and without JS the rule above runs untouched. */
+.v2-reveal.v2-reveal-hold {
+  animation: none;
+  opacity: 0;
+  transform: translateY(14px);
+  will-change: opacity, transform;
+}
+
+.v2-reveal.v2-reveal-hold.is-visible {
+  animation: v2-fade-up .62s cubic-bezier(.2, .7, .2, 1) both;
+  will-change: auto;
+}
+
 @keyframes v2-fade-up {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
@@ -1451,6 +1468,47 @@ p.v2-heading-copy {
 }
 
 .v2-page-hero-compact { padding-bottom: clamp(1.75rem, 4vw, 2.75rem); }
+
+/* One atmosphere across the site: the same neural still that anchors the home
+   hero returns on inner pages, but far enough back to stay a texture rather
+   than an image. Static, so it costs nothing beyond the cached poster. */
+.v2-page-hero,
+.v2-split-hero {
+  position: relative;
+  overflow: clip;
+  isolation: isolate;
+}
+
+.v2-page-hero::before,
+.v2-split-hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(52vw, 46rem);
+  background: url("/hero-neural-poster.webp") center right / cover no-repeat;
+  opacity: .16;
+  filter: saturate(.4) brightness(1.12);
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, .45) 46%, #000 100%),
+    linear-gradient(180deg, transparent 0%, #000 30%, #000 66%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, .45) 46%, #000 100%),
+    linear-gradient(180deg, transparent 0%, #000 30%, #000 66%, transparent 100%);
+  mask-composite: intersect;
+  pointer-events: none;
+}
+
+@media (max-width: 720px) {
+  .v2-page-hero::before,
+  .v2-split-hero::before {
+    width: 74%;
+    opacity: .12;
+  }
+}
 
 .v2-page-hero h1 {
   max-width: 46rem;
