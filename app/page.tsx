@@ -87,6 +87,7 @@ export default function HomePage() {
   return (
     <div className="v2-home">
       <section className="v2-hero">
+        <HeroNeuralMedia />
         <Container className="v2-hero-grid">
           <div className="v2-hero-copy v2-reveal">
             <p className="v2-eyebrow ru-only">Неврологическая консультация из Германии</p>
@@ -116,9 +117,8 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="v2-hero-media v2-reveal v2-reveal-delay" data-future-visual="neuroscience-layer">
-            <HeroNeuralMedia />
-            <figure className="v2-portrait-frame">
+          <div className="v2-hero-media v2-reveal v2-reveal-delay">
+            <figure className="v2-portrait-integrated">
               <img
                 src="/zhenis-ayazbayev.jpg"
                 alt="Женис Аязбаев — Zhenis Ayazbayev, Facharzt für Neurologie"
@@ -127,16 +127,10 @@ export default function HomePage() {
                 fetchPriority="high"
                 decoding="async"
               />
-              <figcaption>
-                <span className="ru-only">Facharzt в Германии</span>
-                <span className="de-only">Facharzt in Deutschland</span>
-              </figcaption>
             </figure>
-            <div className="v2-hero-seal" aria-hidden="true">
-              <span className="v2-seal-desktop">DE</span>
-              <small className="v2-seal-desktop">Approbation</small>
-              <span className="v2-seal-mobile">✓</span>
-              <small className="v2-seal-mobile">Deutsche Approbation</small>
+            <div className="v2-hero-credential">
+              <span>Deutsche Approbation</span>
+              <small>2020</small>
             </div>
           </div>
         </Container>
