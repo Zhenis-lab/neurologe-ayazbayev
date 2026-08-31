@@ -1485,7 +1485,9 @@ p.v2-heading-copy {
   letter-spacing: -.04em;
 }
 
-.v2-split-hero-media { display: grid; place-items: center; }
+.v2-split-hero-media { position: relative; display: grid; place-items: center; }
+.v2-split-hero-media .v2-portrait-integrated { width: min(100%, 24rem); }
+.v2-split-hero-media .v2-hero-credential { right: 0; bottom: 1.25rem; }
 
 .v2-fact-row {
   display: grid;

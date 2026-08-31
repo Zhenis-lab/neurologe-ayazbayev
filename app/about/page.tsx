@@ -148,13 +148,13 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="v2-split-hero-media v2-reveal v2-reveal-delay">
-            <figure className="v2-portrait-frame">
+            <figure className="v2-portrait-integrated">
               <img src="/zhenis-ayazbayev.jpg" alt="Женис Аязбаев — Facharzt für Neurologie" width="1055" height="1536" decoding="async" />
-              <figcaption>
-                <span className="ru-only">Facharzt в Германии</span>
-                <span className="de-only">Facharzt in Deutschland</span>
-              </figcaption>
             </figure>
+            <div className="v2-hero-credential">
+              <span>Facharzt für Neurologie</span>
+              <small>Deutschland</small>
+            </div>
           </div>
         </Container>
       </section>
