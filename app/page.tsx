@@ -3,7 +3,6 @@ import { CheckIcon, DocumentIcon } from "../components/Icons";
 import { ButtonLink } from "../components/v2/ButtonLink";
 import { Container } from "../components/v2/Container";
 import { HeroNeuralMedia } from "../components/v2/HeroNeuralMedia";
-import { NeuralVisual } from "../components/v2/NeuralVisual";
 import { Section } from "../components/v2/Section";
 
 const problems = [
@@ -38,21 +37,27 @@ const credentials = [
     de: "Deutsche Approbation",
     ruMeta: "Право на врачебную практику в Германии · 2020",
     deMeta: "Ärztliche Berufserlaubnis in Deutschland · 2020",
-    href: "/documents/approbation.jpg"
+    href: "/documents/approbation.jpg",
+    preview: "/documents/approbation.webp",
+    alt: "Немецкая Approbation Жениса Аязбаева"
   },
   {
     ru: "Магистр медицинских наук",
     de: "Master of Medical Sciences",
     ruMeta: "Академическая степень по медицине · 2014",
     deMeta: "Akademischer Abschluss in Medizin · 2014",
-    href: "/documents/master-diploma.jpg"
+    href: "/documents/master-diploma.jpg",
+    preview: "/documents/master-diploma.webp",
+    alt: "Диплом магистра медицинских наук Жениса Аязбаева"
   },
   {
     ru: "Диплом врача",
     de: "Arztdiplom",
     ruMeta: "Высшее медицинское образование · 2001",
     deMeta: "Hochschulabschluss Humanmedizin · 2001",
-    href: "/documents/doctor-diploma.jpg"
+    href: "/documents/doctor-diploma.jpg",
+    preview: "/documents/doctor-diploma.webp",
+    alt: "Диплом врача Жениса Аязбаева"
   }
 ];
 
@@ -129,8 +134,8 @@ export default function HomePage() {
               />
             </figure>
             <div className="v2-hero-credential">
-              <span>Deutsche Approbation</span>
-              <small>2020</small>
+              <span>Facharzt für Neurologie</span>
+              <small>Deutschland</small>
             </div>
           </div>
         </Container>
@@ -247,6 +252,9 @@ export default function HomePage() {
               rel="noreferrer"
               key={credential.href}
             >
+              <span className="v2-credential-preview">
+                <img src={credential.preview} alt={credential.alt} loading="lazy" decoding="async" />
+              </span>
               <span className="v2-credential-icon"><DocumentIcon /></span>
               <span className="v2-card-index">{String(index + 1).padStart(2, "0")}</span>
               <strong className="ru-only">{credential.ru}</strong>
@@ -301,7 +309,6 @@ export default function HomePage() {
 
       <Section id="request" className="v2-final-section">
         <div className="v2-final-cta v2-reveal">
-          <NeuralVisual />
           <div>
             <p className="v2-kicker v2-kicker-light ru-only">Следующий шаг</p>
             <p className="v2-kicker v2-kicker-light de-only">Der nächste Schritt</p>

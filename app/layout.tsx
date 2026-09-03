@@ -4,7 +4,10 @@ import Script from "next/script";
 import { Header } from "../components/Header";
 import { Container } from "../components/v2/Container";
 import { RevealOnScroll } from "../components/v2/RevealOnScroll";
+import "@fontsource-variable/cormorant-garamond";
+import "@fontsource-variable/manrope";
 import "./globals.css";
+import "./editorial.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://neurologe-sig.de"),
@@ -100,7 +103,7 @@ const physicianSchema = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ru" data-lang="ru">
+    <html lang="ru" data-lang="ru" suppressHydrationWarning>
       <body>
         <Script
           id="language-init"
@@ -115,19 +118,31 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(physicianSchema) }}
         />
+        <a className="v2-skip-link" href="#main-content">
+          <span className="ru-only">Перейти к содержанию</span>
+          <span className="de-only">Zum Inhalt springen</span>
+        </a>
         <Header />
         <RevealOnScroll />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <footer className="v2-footer">
           <Container className="v2-footer-grid">
-            <div>
+            <div className="v2-footer-intro">
               <Link href="/" className="v2-brand v2-footer-brand" aria-label="На главную">
                 <span className="v2-brand-mark" aria-hidden="true">N</span>
                 <span><span className="ru-only">Женис Аязбаев</span><span className="de-only">Zhenis Ayazbayev</span></span>
               </Link>
               <p className="v2-footer-muted ru-only">Facharzt für Neurologie · консультации на русском и немецком</p>
               <p className="v2-footer-muted de-only">Facharzt für Neurologie · Beratung auf Deutsch und Russisch</p>
+              <a className="v2-footer-phone" href="tel:+4915901381634">+49 1590 1381634</a>
             </div>
+            <nav className="v2-footer-nav" aria-label="Footer">
+              <Link href="/about"><span className="ru-only">Обо мне</span><span className="de-only">Über mich</span></Link>
+              <Link href="/uslugi"><span className="ru-only">Услуги</span><span className="de-only">Leistungen</span></Link>
+              <Link href="/faq"><span className="ru-only">Вопросы</span><span className="de-only">FAQ</span></Link>
+              <Link href="/kontakt"><span className="ru-only">Контакты</span><span className="de-only">Kontakt</span></Link>
+              <Link href="/zapis"><span className="ru-only">Записаться</span><span className="de-only">Termin anfragen</span></Link>
+            </nav>
             <div className="v2-footer-note">
               <p className="ru-only">Онлайн-консультация не заменяет экстренную помощь или очный осмотр.</p>
               <p className="de-only">Eine Online-Beratung ersetzt weder den Notdienst noch eine notwendige Untersuchung vor Ort.</p>

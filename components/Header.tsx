@@ -36,10 +36,8 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    const saved = localStorage.getItem("site-language");
-    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const detected = timeZone === "Europe/Berlin" ? "de" : "ru";
-    const initial = saved === "de" || saved === "ru" ? saved : detected;
+    const documentLanguage = document.documentElement.dataset.lang;
+    const initial = documentLanguage === "de" ? "de" : "ru";
     setLang(initial);
     document.documentElement.dataset.lang = initial;
     document.documentElement.lang = initial;
